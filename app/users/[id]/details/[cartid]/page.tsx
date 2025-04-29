@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from 'react';
 import { useParams } from 'next/navigation';
-import { log } from 'console';
 
 type Cart = {
   id: number;
@@ -17,7 +16,7 @@ type Cart = {
 export default function CartDetailPage() {
   const { cartId } = useParams();
   const [cart, setCart] = useState<Cart | null>(null);
-  const [loading, setLoading] = useState(true);
+  const [loading] = useState(true);
 
   useEffect(() => {
     const get = async()=> {
@@ -32,7 +31,6 @@ setCart(data)
   if (loading) return <div>Loading...</div>;
   if (!cart) return <div>error</div>;
 
-  console.log(cart);
   
   return (
     <div>
